@@ -1,1 +1,1 @@
-# shallow-molecules
+# MGB (Molecules Go Brr)
