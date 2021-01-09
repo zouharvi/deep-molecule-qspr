@@ -26,4 +26,5 @@ C = Convergence
 
 ## Normalization
 Vertices - by total amount of vertices
+
 Edges, bonds - by total amount of edges
