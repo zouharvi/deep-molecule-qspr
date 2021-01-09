@@ -16,7 +16,7 @@ l-I-10,l-10-5,l-5-1
 
 
 |Data|Method|Model|Train|Valid|Convergence| Notes |
-|-|-|-|-|-|-||
+|-|-|-|-|-|-|-|
 |trees1{X,Y}| TODO | l-I-1 | 39.735 | 41.939 | X | |
 |boil1| Weighted vertices and edges on a small amount of data | l-I-1 | 127.701 | 107.297 | - | |
 |melt1| Weighted vertices and edges on a small amount of data | l-I-1 | 122.179 | 138.810 | - | |
