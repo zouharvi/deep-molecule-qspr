@@ -13,8 +13,8 @@ TEST_COUNT = 200
 
 parser = argparse.ArgumentParser(description='Molecules.')
 parser.add_argument('model_params', help='Model parameters')
-parser.add_argument('--data', default='data/melt_dataset_cleaned.pickle')
-parser.add_argument('-v', '--var', default='melting_point')
+parser.add_argument('--data', default='data/boil2.pickle')
+parser.add_argument('-v', '--var', default='boiling_point')
 parser.add_argument('--epochs', default=50, type=int, help='Number of epochs')
 args = parser.parse_args()
 
