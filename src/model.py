@@ -30,7 +30,7 @@ class Model(nn.Module):
             if param[0] == 'D':
                 layers.append(nn.Dropout(float(param[1])))
             if param_i != len(params):
-                layers.append(nn.ReLU())
+                layers.append(nn.LeakyReLU())
 
         self.layers = nn.Sequential(*layers)
         self.train(False)
@@ -38,7 +38,7 @@ class Model(nn.Module):
     def forward(self, x):
         return self.layers(x)
 
-    def fit(self, dataTrain, dataValid, epochs):
+    def fit(self, dataTrain, dataValid, epochs, feature_names=None):
         self.train(True)
         loss_fn = torch.nn.MSELoss()
         opt = torch.optim.Adam(self.parameters(), lr=0.5)
@@ -56,7 +56,13 @@ class Model(nn.Module):
                 self.eval()
                 pred = self(dataValid[0]).reshape(-1)
                 lossValid = loss_fn(pred, dataValid[1])
-                # print(list(self.parameters()))
-                print(
-                    f'e{epoch:>2} | {math.sqrt(lossTrain.item()):>7.3f} | {math.sqrt(lossValid.item()):>7.3f}')
+                if feature_names is not None:
+                    parameters = list(self.parameters())
+                    first_layer = list(parameters[0].data[0]) + [parameters[1].data[0]]
+                    # print(len(parameters[1].data[0]))
+                    for val, name in zip(first_layer, list(feature_names) + ['bias']):
+                        print(f'{name:>10}: {val:5.3f}')
+                    print('---')
+                print(f'e{epoch:<9}:', end='')
+                print(f'{math.sqrt(lossTrain.item()):>7.3f} | {math.sqrt(lossValid.item()):>7.3f}')
         self.train(False)

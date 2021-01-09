@@ -15,23 +15,17 @@ parser = argparse.ArgumentParser(description='Molecules.')
 parser.add_argument('model_params', help='Model parameters')
 parser.add_argument('--data', default='data/boil1.pickle')
 parser.add_argument('-v', '--var', default='boiling_point')
+parser.add_argument('--reveal', action='store_true', help='Reveal parameters')
 parser.add_argument('--epochs', default=50, type=int, help='Number of epochs')
 args = parser.parse_args()
-
 
 with open(args.data, 'rb') as f:
     data = pickle.load(f)
     dataTrainY = torch.Tensor(data.pop(args.var))
-    print(data.keys())
-
-    data['mol_weight'] = [x/100 for x in data['mol_weight']]
-    # data.pop('mol_length')
-    # data.pop('mol_weight')
-    # for k in list(data.keys()):
-    #     if len(k) > 4 and (':' not in k):
-    #         data.pop(k)
+    feature_names = data.keys()
     dataTrainX = torch.transpose(torch.Tensor(list(data.values())), 0, 1)
 
+print(feature_names)
 print(dataTrainY.shape)
 print(dataTrainX.shape)
 print(dataTrainX[0])
@@ -51,15 +45,21 @@ print('Train', dataTrainX.shape, dataTrainY.shape)
 
 model = Model(args.model_params)
 
-# dataTrainX = torch.Tensor([[1,2,3], [-5, 4, 1], [-1,-2,-3]])
-# dataTrainY = torch.Tensor([7, 9, -7])
-# dataValidX = torch.Tensor([[90,0,1], [1, 2, -1]])
-# dataValidY = torch.Tensor([1, 3])
+# dataTrainX = []
+# dataTrainY = []
+# for _ in range(100):
+#     x = random.randint(0, 1000)
+#     dataTrainX.append([x, x*x+5, 2])
+#     dataTrainY.append(x+2*x*x+10)
 
-# dataTrainX = torch.Tensor([[1,2,3], [-5, 4, 1]])
-# dataTrainY = torch.Tensor([7, 9])
-# dataValidX = torch.Tensor([[1, 2, 3]])
-# dataValidY = torch.Tensor([7])
+# dataTrainX = torch.Tensor(dataTrainX)
+# dataTrainY = torch.Tensor(dataTrainY)
+# dataValidX = dataTrainX
+# dataValidY = dataTrainY
+# feature_names = ['a', 'b', 'c']
 
-model.fit((dataTrainX, dataTrainY),
-          (dataValidX, dataValidY), epochs=args.epochs)
+model.fit(
+    (dataTrainX, dataTrainY),
+    (dataValidX, dataValidY),
+    epochs=args.epochs,
+    feature_names=feature_names if args.reveal else None)
