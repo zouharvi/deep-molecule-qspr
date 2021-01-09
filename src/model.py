@@ -2,26 +2,35 @@
 
 import torch
 import torch.nn as nn
+import math
+import torch.utils.data as tudata
 import numpy as np
 from collections import OrderedDict
 
+
 class RMSELoss(torch.nn.Module):
     def __init__(self):
-        super(RMSELoss,self).__init__()
+        super(RMSELoss, self).__init__()
 
-    def forward(self,x,y):
+    def forward(self, x, y):
         criterion = nn.MSELoss()
         loss = torch.sqrt(criterion(x, y))
         return loss
+
 
 class Model(nn.Module):
     def __init__(self, params):
         super().__init__()
         params = [tok.strip().split('-') for tok in params.split(',')]
         layers = []
-        for param in params:
+        for param_i, param in enumerate(params):
             if param[0] == 'l':
-                layers.append(nn.Linear(int(param[1]), int(param[2])))
+                layers.append(
+                    nn.Linear(int(param[1]), int(param[2]), bias=True))
+            if param[0] == 'd':
+                layers.append(nn.Dropout(float(param[1])))
+            if param_i != len(params):
+                layers.append(nn.ReLU())
 
         self.layers = nn.Sequential(*layers)
         self.train(False)
@@ -29,28 +38,25 @@ class Model(nn.Module):
     def forward(self, x):
         return self.layers(x)
 
-    def fit(self, dataTrainX, dataTrainY, epochs=5):
+    def fit(self, dataTrain, dataValid, epochs):
         self.train(True)
-        loss_fn = RMSELoss()
-        opt = torch.optim.SGD(model.parameters(), lr=0.2)
+        loss_fn = torch.nn.MSELoss()
+        opt = torch.optim.Adam(self.parameters(), lr=0.5)
+
         for epoch in range(epochs):
-            pred = model(dataTrainX).reshape(-1)
-            loss = loss_fn(pred, dataTrainY) 
-            loss.backward()
+            self.train(True)
+
+            pred = self(dataTrain[0]).reshape(-1)
+            lossTrain = loss_fn(pred, dataTrain[1])
+            lossTrain.backward()
             opt.step()
             opt.zero_grad()
-            
-            print(f'e{epoch:>2} | Train Loss: {loss.item()}')
+
+            if epoch % 50 == 0:
+                self.eval()
+                pred = self(dataValid[0]).reshape(-1)
+                lossValid = loss_fn(pred, dataValid[1])
+                print(list(self.parameters()))
+                print(
+                    f'e{epoch:>2} | Train Loss: {math.sqrt(lossTrain.item()):>7.3f}, Valid Loss: {math.sqrt(lossValid.item()):>7.3f}')
         self.train(False)
-
-
-
-dataTrain = torch.Tensor([[1, 2, 3, 6], [2, -1, 1, 2], [0, 0, 1, 1]])
-dataTrainX = dataTrain[:, :3]
-dataTrainY = dataTrain[:, 3]
-print(dataTrainX.shape)
-print(dataTrainY.shape)
-
-
-model = Model("l-3-1")
-model.fit(dataTrainX, dataTrainY, epochs=5)
