@@ -24,10 +24,10 @@ class Model(nn.Module):
         params = [tok.strip().split('-') for tok in params.split(',')]
         layers = []
         for param_i, param in enumerate(params):
-            if param[0] == 'l':
+            if param[0] == 'L':
                 layers.append(
                     nn.Linear(int(param[1]), int(param[2]), bias=True))
-            if param[0] == 'd':
+            if param[0] == 'D':
                 layers.append(nn.Dropout(float(param[1])))
             if param_i != len(params):
                 layers.append(nn.ReLU())

@@ -13,8 +13,8 @@ TEST_COUNT = 200
 
 parser = argparse.ArgumentParser(description='Molecules.')
 parser.add_argument('model_params', help='Model parameters')
-parser.add_argument('--data', default='data/melt1.pickle')
-parser.add_argument('-v', '--var', default='melting_point')
+parser.add_argument('--data', default='data/boil1.pickle')
+parser.add_argument('-v', '--var', default='boiling_point')
 parser.add_argument('--epochs', default=50, type=int, help='Number of epochs')
 args = parser.parse_args()
 
@@ -23,8 +23,12 @@ with open(args.data, 'rb') as f:
     data = pickle.load(f)
     dataTrainY = torch.Tensor(data.pop(args.var))
     print(data.keys())
-    # for k,v in list(data.items()):
-    #     if len(k) > 2:
+
+    data['mol_weight'] = [x/100 for x in data['mol_weight']]
+    # data.pop('mol_length')
+    # data.pop('mol_weight')
+    # for k in list(data.keys()):
+    #     if len(k) > 4 and (':' not in k):
     #         data.pop(k)
     dataTrainX = torch.transpose(torch.Tensor(list(data.values())), 0, 1)
 
