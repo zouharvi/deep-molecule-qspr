@@ -29,6 +29,7 @@ C = Convergence, 1 (no) to 5 (best)
 |boil4 | Weighted vertices and edges | same as boil3 + hydrogen vertices added | L-In-1 | 24.025 | 23.512 | 5 |
 |boil4 | | | L-In-8,L-8-4,L-4-1 | 8.358 | 17.468 | 4 |
 |boil5 | Weighted vertices and edges with respect to bond order | bug on edge weights fixed | L-In-1 | 18.438 | 18.860 | 5 |
+|boil5 | | | L-28-5-5,L-5-5,L-5-1 | 16.683 | 17.545 | 4 |
 
 ## Normalization
 
