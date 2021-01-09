@@ -24,6 +24,7 @@ C = Convergence
 |boil2| boil2, Verticies only |non-normalized |L-In-1 | 65.628 | 61.316 | Y |
 |boil3 | Weighted vertices and edges | normalized data, added feature: molecule_length; mol_weight / 100 | L-In-1 | 31.164 | 27.502 | Y |
 |boil4 | Weighted vertices and edges | same as boil3 + hydrogen vertices added |  | | | |
+|boil5 | Weighted vertices and edges with respect to bond order | bug on edge weights fixed |  | | | |
 ## Normalization
 Vertices - by total amount of vertices
 
