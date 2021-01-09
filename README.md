@@ -23,3 +23,8 @@ C = Convergence
 |boil2| boil1, Threshold for verticies shifted from 40 to 60 |non-normalized|L-In-1 | 95.877 | 91.354 | - |
 |boil2| boil2, Verticies only |non-normalized |L-In-1 | 65.628 | 61.316 | Y |
 |boil3 | Weighted vertices and edges | normalized data, added feature: molecule_length; mol_weight / 100 | L-In-1 | 31.164 | 27.502 | Y |
+
+## Normalization
+Vertices - by total amount of vertices
+
+Edges, bonds - by total amount of edges
