@@ -64,5 +64,5 @@ class Model(nn.Module):
                         print(f'{name:>10}: {val:5.3f}')
                     print('---')
                 print(f'e{epoch:<9}:', end='')
-                print(f'{math.sqrt(lossTrain.item()):>7.3f} | {math.sqrt(lossValid.item()):>7.3f}')
+                print(f'{math.sqrt(lossTrain.item()):>6.3f} | {math.sqrt(lossValid.item()):>6.3f}')
         self.train(False)
