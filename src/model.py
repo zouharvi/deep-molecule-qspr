@@ -56,7 +56,7 @@ class Model(nn.Module):
                 self.eval()
                 pred = self(dataValid[0]).reshape(-1)
                 lossValid = loss_fn(pred, dataValid[1])
-                print(list(self.parameters()))
+                # print(list(self.parameters()))
                 print(
                     f'e{epoch:>2} | Train Loss: {math.sqrt(lossTrain.item()):>7.3f}, Valid Loss: {math.sqrt(lossValid.item()):>7.3f}')
         self.train(False)

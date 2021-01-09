@@ -8,27 +8,26 @@ import torch.utils.data as tudata
 import pickle
 import random
 
+torch.manual_seed(0)
 TEST_COUNT = 200
 
 parser = argparse.ArgumentParser(description='Molecules.')
 parser.add_argument('model_params', help='Model parameters')
-parser.add_argument('--dataX', default='data/treesX.pickle', help='Features')
-parser.add_argument('--dataY', default='data/treesY.pickle', help='Predictions')
+parser.add_argument('--data', default='data/melt_dataset_cleaned.pickle')
+parser.add_argument('-v', '--var', default='melting_point')
 parser.add_argument('--epochs', default=50, type=int, help='Number of epochs')
 args = parser.parse_args()
 
-torch.manual_seed(0)
-random_rows = torch.randperm(2776)
 
-with open(args.dataY, 'rb') as f:
-    dataTrainY = torch.Tensor(pickle.load(f))
-
-with open(args.dataX, 'rb') as f:
-    dataTrainX = torch.transpose(torch.Tensor(pickle.load(f)), 0, 1)
+with open(args.data, 'rb') as f:
+    data = pickle.load(f)
+    dataTrainY = torch.Tensor(data.pop(args.var))
+    dataTrainX = torch.transpose(torch.Tensor(list(data.values())), 0, 1)
 
 print(dataTrainY.shape)
 print(dataTrainX.shape)
 print(dataTrainX[0])
+random_rows = torch.randperm(len(dataTrainY))
 
 dataTrainX = dataTrainX[random_rows]
 dataTrainY = dataTrainY[random_rows]
@@ -54,4 +53,5 @@ model = Model(args.model_params)
 # dataValidX = torch.Tensor([[1, 2, 3]])
 # dataValidY = torch.Tensor([7])
 
-model.fit((dataTrainX, dataTrainY), (dataValidX, dataValidY), epochs=args.epochs)
+model.fit((dataTrainX, dataTrainY),
+          (dataValidX, dataValidY), epochs=args.epochs)
