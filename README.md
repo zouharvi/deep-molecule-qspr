@@ -33,6 +33,7 @@ C = Convergence, 1 (no) to 5 (best)
 |boil6 | Eccentrity index and unweighted wiener index features added | | L-30-1 | 18.512 | 18.927 | 4 |
 |boil6 | | | L-30-10,L-15-10,L-10-1 (lr=0.005)| 10.774 | 12.912 | 4 |
 |boil7 | Root of mol. weight | | | |  | |
+|boil7 | "Density of side chains" | Number of molecules outside of the core divided by number of atoms in the core | | |  | |
 ## Normalization
 
 Vertices - by total amount of vertices
