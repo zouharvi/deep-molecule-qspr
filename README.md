@@ -31,8 +31,9 @@ C = Convergence, 1 (no) to 5 (best)
 |boil5 | Weighted vertices and edges with respect to bond order | bug on edge weights fixed | L-In-1 | 18.438 | 18.860 | 5 |
 |boil5 | | | L-28-5-5,L-5-5,L-5-1 | 16.683 | 17.545 | 4 |
 |boil6 | Eccentrity index and unweighted wiener index features added | | L-30-1 | 18.512 | 18.927 | 4 |
-|boil6 | | | L-30-10,L-15-10,L-10-1 (lr=0.005)| 10.774 | 12.912 | 4 |
-|boil7 | Root of mol. weight | | | |  | |
+|boil6 | | | L-30-15,L-15-10,L-10-1 (lr=0.005)| 10.774 | 12.912 | 4 |
+|boil7 | Root of mol. weight | | L-30-1 (lr=0.0025) |17.962 | 18.351  |4|
+
 ## Normalization
 
 Vertices - by total amount of vertices
