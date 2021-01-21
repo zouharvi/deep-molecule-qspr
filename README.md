@@ -35,6 +35,9 @@ C = Convergence, 1 (no) to 5 (best)
 |boil7 | Root of mol. weight | | L-30-1 (lr=0.0025) |17.962 | 18.351  |4|
 |boil8 | "Density of side chains" | Number of molecules outside of the core divided by number of atoms in the core | L-31-1 lr0.0025 | 17.291 | 17.445| 4 |
 |boil8 | | | L-31-15,L-15-10,L-10-1 lr0.0025 | 11.701 | 12.469 | 3 |
+|boil9 |Only number of vertices and edges of given classes as features | | |  | |  |
+
+
 
 ## Normalization
 
