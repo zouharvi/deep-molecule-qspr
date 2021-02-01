@@ -26,7 +26,8 @@ class Model(nn.Module):
         for param_i, param in enumerate(params):
             if param[0] == 'L':
                 layers.append(
-                    nn.Linear(int(param[1]), int(param[2]), bias=True))
+                    nn.Linear(int(param[1]), int(param[2]), bias=True)
+                )
             if param[0] == 'D':
                 layers.append(nn.Dropout(float(param[1])))
             if param_i != len(params):
@@ -41,8 +42,7 @@ class Model(nn.Module):
     def fit(self, dataTrain, dataValid, epochs, feature_names=None):
         self.train(True)
         loss_fn = torch.nn.MSELoss()
-        opt = torch.optim.Adam(self.parameters(), lr=0.0025)
-
+        opt = torch.optim.Adam(self.parameters(), lr=0.025)
         for epoch in range(epochs):
             self.train(True)
 

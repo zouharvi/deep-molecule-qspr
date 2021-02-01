@@ -8,6 +8,9 @@ import torch.utils.data as tudata
 import pickle
 import random
 
+DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
+DEVICE = 'cpu'
+print('Running on', DEVICE)
 torch.manual_seed(0)
 TEST_COUNT = 200
 
@@ -43,7 +46,11 @@ print('Test', dataTestX.shape, dataTestY.shape)
 print('Valid', dataValidX.shape, dataValidY.shape)
 print('Train', dataTrainX.shape, dataTrainY.shape)
 
-model = Model(args.model_params)
+model = Model(args.model_params).to(DEVICE)
+dataTrainX = dataTrainX.to(DEVICE)
+dataTrainY = dataTrainY.to(DEVICE)
+dataValidX = dataValidX.to(DEVICE)
+dataValidY = dataValidY.to(DEVICE)
 
 # dataTrainX = []
 # dataTrainY = []

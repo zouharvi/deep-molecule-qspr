@@ -37,9 +37,9 @@ C = Convergence, 1 (no) to 5 (best)
 |boil8 | | | L-31-15,L-15-10,L-10-1 lr0.0025 | 11.701 | 12.469 | 3 |
 |boil9 |Only number of vertices and edges of given classes as features | | L-24-1 | 22.845 | 19.169 | 5 |
 
+Surprisingly, layer normalization does not help.
 
-
-## Normalization
+## Data Normalization
 
 Vertices - by total amount of vertices
 
