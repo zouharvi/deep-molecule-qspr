@@ -42,7 +42,7 @@ class Model(nn.Module):
     def fit(self, dataTrain, dataValid, epochs, feature_names=None):
         self.train(True)
         loss_fn = torch.nn.MSELoss()
-        opt = torch.optim.Adam(self.parameters(), lr=0.025)
+        opt = torch.optim.Adam(self.parameters(), lr=0.0025)
         for epoch in range(epochs):
             self.train(True)
 
