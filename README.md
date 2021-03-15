@@ -37,8 +37,8 @@ C = Convergence, 1 (no) to 5 (best)
 |boil8 | | | L-31-15,L-15-10,L-10-1 lr0.0025 | 11.701 | 12.469 | 3 |
 |boil9 |Only number of vertices and edges of given classes as features | | L-24-1 | 22.845 | 19.169 | 5 |
 |boil10 |Same as boil9, but without separate atoms | | L-23-1 | 20.303 | 19.666 | 5 |
-|boil11 | TODO | | L-28-1 | 17.774 | 16.958 | 5 |
-|boil11 | TODO | | L-28-15,L-15-10,L-10-1 | 11.298 | 12.373 | 4 |
+|boil11 | switched unweighted wiener feature for log(Wiener)  | | L-28-1 | 17.774 | 16.958 | 5 |
+|boil11 |  | | L-28-15,L-15-10,L-10-1 | 11.298 | 12.373 | 4 |
 
 Surprisingly, layer normalization does not help.
 
