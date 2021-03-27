@@ -1,8 +1,7 @@
-# MGB (Molecules Go Brr)
+# Deep Molecule QSPR (Quantitative Structure-Property Relationships)
 
-TODO:
+This repository is a hub for a project whose goal is to predict several key temperature points of a molecule. The input is a graph of the given molecule and the output a single number: the predicted boiling or melting point. The model uses graph-informed feature extraction, which is then used as an input to simple feed forward neural networks, which achieve a significant performance, or a simple linear regression model, which allows for a degree of explainability. The novel contributions include the feature extraction itself (various atom weighting and structural functions), applicability to a wide range of molecule classes and the combination with a neural network to gain better performance compared to widely used linear regression models.
 
-Wiener Index.
 
 ## Model Zoo
 
