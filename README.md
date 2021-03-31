@@ -12,14 +12,13 @@ L-In-5,l-5-1
 L-In-10,l-10-5,l-5-1
 ```
 
-Leaky RELu(0.01)
-
 ## Data Zoo
 
 C = Convergence, 1 (no) to 5 (best)
 
 | File | Method | Notes | Model | Train | Valid | C |
 |-|-|-|-|-|-|-|
+|**global** | | Leaky ReLU(0.01) | | | | |
 |boil0 | Weighted verices and amount of bonds for each bond category as features |vertices weighted, bonds unweighted|L-In-1 | 39.735 | 41.939 | 5 | 
 |boil1 | Weighted vertices and edges on a small amount of data |non-normalized| L-In-1 | 127.701 | 107.297 | 2 | 
 |melt1 | Weighted vertices and edges on a small amount of data |non-normalized| L-In-1 | 122.179 | 138.810 | 2 |
@@ -39,8 +38,11 @@ C = Convergence, 1 (no) to 5 (best)
 |boil10 |Same as boil9, but without separate atoms | | L-23-1 | 20.303 | 19.666 | 5 |
 |boil11 | switched unweighted wiener feature for log(Wiener)  | | L-28-1 | 17.774 | 16.958 | 5 |
 |boil11 |  | | L-28-15,L-15-10,L-10-1 | 11.298 | 12.373 | 4 |
+|**global** | | Leaky ReLU(0.03) | | | | |
+|boil11 |  | | L-28-15,L-15-10,L-10-1 | 11.685 | 11.571 | 4 |
+|boil12 |  | | L-29-15,L-15-10,L-10-1 | 11.685 | 11.571 | 4 |
 
-Surprisingly, layer normalization does not help.
+Tanh, sigmoid and layer normalization do not work. Only Leaky RELU and SELU achieve good performance.
 
 ## Data Normalization
 

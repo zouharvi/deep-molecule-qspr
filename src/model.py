@@ -31,7 +31,7 @@ class Model(nn.Module):
             if param[0] == 'D':
                 layers.append(nn.Dropout(float(param[1])))
             if param_i != len(params):
-                layers.append(nn.LeakyReLU())
+                layers.append(nn.LeakyReLU(negative_slope=0.03))
 
         self.layers = nn.Sequential(*layers)
         self.train(False)
