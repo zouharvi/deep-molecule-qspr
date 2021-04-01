@@ -39,7 +39,7 @@ C = Convergence, 1 (no) to 5 (best)
 |boil11* |  | | L-28-15,L-15-10,L-10-1 | 11.298 | 12.373 | 4 |
 |**global** | | Leaky ReLU(0.03) | | | | |
 |boil11* |  | | L-28-15,L-15-10,L-10-1 | 11.685 | 11.571 | 4 |
-|boil12 | Trees attempt (?) | | L-29-15,L-15-10,L-10-1 | 18.879 | 25.689 | 3 |
+|boil12 | Niki's dummheit | | L-29-15,L-15-10,L-10-1 | 18.879 | 25.689 | 3 |
 
 Tanh, sigmoid and layer normalization do not work. Only Leaky RELU and SELU achieve good performance.
 
