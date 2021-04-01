@@ -29,16 +29,16 @@ C = Convergence, 1 (no) to 5 (best)
 |boil5 | Weighted vertices and edges with respect to bond order | bug on edge weights fixed | L-In-1 | 18.438 | 18.860 | 5 |
 |boil5 | | | L-28-5-5,L-5-5,L-5-1 | 16.683 | 17.545 | 4 |
 |boil6 | Eccentrity index and unweighted wiener index features added | | L-30-1 | 18.512 | 18.927 | 4 |
-|boil6 | | | L-30-15,L-15-10,L-10-1 (lr=0.005)| 10.774 | 12.912 | 4 |
+|boil6* | | | L-30-15,L-15-10,L-10-1 (lr=0.005)| 10.774 | 12.912 | 4 |
 |boil7 | Root of mol. weight | | L-30-1 (lr=0.0025) |17.962 | 18.351  |4|
 |boil8 | "Density of side chains" | Number of molecules outside of the core divided by number of atoms in the core | L-31-1 lr0.0025 | 17.291 | 17.445| 4 |
 |boil8 | | | L-31-15,L-15-10,L-10-1 lr0.0025 | 11.701 | 12.469 | 3 |
 |boil9 |Only number of vertices and edges of given classes as features | | L-24-1 | 22.845 | 19.169 | 5 |
 |boil10 |Same as boil9, but without separate atoms | | L-23-1 | 20.303 | 19.666 | 5 |
 |boil11 | switched unweighted wiener feature for log(Wiener)  | | L-28-1 | 17.774 | 16.958 | 5 |
-|boil11 |  | | L-28-15,L-15-10,L-10-1 | 11.298 | 12.373 | 4 |
+|boil11* |  | | L-28-15,L-15-10,L-10-1 | 11.298 | 12.373 | 4 |
 |**global** | | Leaky ReLU(0.03) | | | | |
-|boil11 |  | | L-28-15,L-15-10,L-10-1 | 11.685 | 11.571 | 4 |
+|boil11* |  | | L-28-15,L-15-10,L-10-1 | 11.685 | 11.571 | 4 |
 |boil12 | Trees attempt (?) | | L-29-15,L-15-10,L-10-1 | 18.879 | 25.689 | 3 |
 
 Tanh, sigmoid and layer normalization do not work. Only Leaky RELU and SELU achieve good performance.
